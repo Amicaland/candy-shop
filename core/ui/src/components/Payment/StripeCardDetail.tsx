@@ -80,12 +80,14 @@ export const StripeCardDetail: React.FC<StripeCardDetailProps> = ({
   return (
     <div className="card-payment-modal-container">
       <div className="candy-title">Credit Card</div>
-      <CardNumberElement options={numberOptions} />
+      <div className="stripe-input">
+        <CardNumberElement options={numberOptions} />
+      </div>
       <div style={{ display: 'flex' }}>
-        <div style={{ width: '40%' }}>
+        <div className="stripe-input" style={{ width: '40%', marginRight: '8px' }}>
           <CardExpiryElement options={expOptions} />
         </div>
-        <div style={{ width: '60%' }}>
+        <div className="stripe-input" style={{ flexGrow: 1 }}>
           <CardCvcElement />
         </div>
       </div>
@@ -98,22 +100,22 @@ export const StripeCardDetail: React.FC<StripeCardDetailProps> = ({
 
 // TODO: Customize CardElement styling by overriding stripe's style
 const numberOptions: StripeCardNumberElementOptions = {
-  placeholder: '00-00-00-00',
+  placeholder: '0000-0000-0000-0000',
+  showIcon: true,
   style: {
     base: {
       color: 'blue',
-      fontSize: '24px',
-      '::placeholder': {
-        color: '#87BBFD'
-      }
+      fontSize: '16px',
+      padding: '8px'
     }
   }
 };
 const expOptions: StripeCardNumberElementOptions = {
   style: {
     base: {
-      backgroundColor: 'pink',
-      padding: '4px'
+      color: 'blue',
+      fontSize: '16px',
+      padding: '8px'
     }
   }
 };
